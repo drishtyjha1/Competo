@@ -21,9 +21,13 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     BannerEventPagerAdapter bannerEventPagerAdapter;
-    TabLayout tabLayout;
+    TabLayout indicatorTab,categoryTab;
     ViewPager bannerViewPager;
-    List<BannerEvent> bannerEventList;
+    List<BannerEvent> homeBannerList;
+    List<BannerEvent> eventBannerList;
+    List<BannerEvent> communicationFormBannerList;
+    List<BannerEvent> eventPalBannerList;
+//    List<BannerEvent> IndexBannerList;
 
 
     private ActivityMainBinding activityMainBinding;
@@ -35,23 +39,89 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(activityMainBinding.getRoot());
 
-        tabLayout=findViewById(R.id.tab_indicator);
-
-        bannerEventList=new ArrayList<>();
-        bannerEventList.add(new BannerEvent(1,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
-        bannerEventList.add(new BannerEvent(2,"LITTLE WOMEN","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner2.png",""));
-        bannerEventList.add(new BannerEvent(3,"BHOOT","https://png.pngtree.com/thumb_back/fw800/back_pic/05/06/22/87596c72e3222da.jpg",""));
-        bannerEventList.add(new BannerEvent(4,"MIRZAPUR","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner4.png",""));
-        bannerEventList.add(new BannerEvent(5,"PIKACHU","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner5.png",""));
-        bannerEventList.add(new BannerEvent(6,"PONMAGAL VANDHAL","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner3.png",""));
-        bannerEventList.add(new BannerEvent(7,"LITTLE WOMEN","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner2.png",""));
-        bannerEventList.add(new BannerEvent(8,"BHOOT","","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner1.png"));
-        bannerEventList.add(new BannerEvent(9,"MIRZAPUR","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner3.png",""));
-        bannerEventList.add(new BannerEvent(10,"PIKACHU","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner4.png",""));
+        indicatorTab =findViewById(R.id.tab_indicator);
+        categoryTab= findViewById(R.id.tabLayout2);
 
 
-        setBannerEventPagerAdapter(bannerEventList);
+        homeBannerList =new ArrayList<>();
+        homeBannerList.add(new BannerEvent(1,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        homeBannerList.add(new BannerEvent(2,"LITTLE WOMEN","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner2.png",""));
+        homeBannerList.add(new BannerEvent(3,"BHOOT","https://png.pngtree.com/thumb_back/fw800/back_pic/05/06/22/87596c72e3222da.jpg",""));
+        homeBannerList.add(new BannerEvent(4,"MIRZAPUR","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner4.png",""));
+        homeBannerList.add(new BannerEvent(5,"PIKACHU","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner5.png",""));
+        homeBannerList.add(new BannerEvent(6,"PONMAGAL VANDHAL","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner3.png",""));
+        homeBannerList.add(new BannerEvent(7,"LITTLE WOMEN","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner2.png",""));
+        homeBannerList.add(new BannerEvent(8,"BHOOT","","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner1.png"));
+        homeBannerList.add(new BannerEvent(9,"MIRZAPUR","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner3.png",""));
+        homeBannerList.add(new BannerEvent(10,"PIKACHU","http://androidappsforyoutube.s3.ap-south-1.amazonaws.com/primevideo/banners/homebanner4.png",""));
 
+        eventBannerList =new ArrayList<>();
+        eventBannerList.add(new BannerEvent(1,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventBannerList.add(new BannerEvent(2,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventBannerList.add(new BannerEvent(3,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventBannerList.add(new BannerEvent(4,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventBannerList.add(new BannerEvent(5,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventBannerList.add(new BannerEvent(6,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventBannerList.add(new BannerEvent(7,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventBannerList.add(new BannerEvent(8,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventBannerList.add(new BannerEvent(9,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+
+
+         communicationFormBannerList =new ArrayList<>();
+        communicationFormBannerList.add(new BannerEvent(1,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        communicationFormBannerList.add(new BannerEvent(2,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        communicationFormBannerList.add(new BannerEvent(3,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        communicationFormBannerList.add(new BannerEvent(4,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        communicationFormBannerList.add(new BannerEvent(5,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        communicationFormBannerList.add(new BannerEvent(6,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        communicationFormBannerList.add(new BannerEvent(7,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        communicationFormBannerList.add(new BannerEvent(8,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        communicationFormBannerList.add(new BannerEvent(9,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+
+            eventPalBannerList=new ArrayList<>();
+       eventPalBannerList.add(new BannerEvent(1,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventPalBannerList.add(new BannerEvent(2,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventPalBannerList.add(new BannerEvent(3,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventPalBannerList.add(new BannerEvent(4,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventPalBannerList.add(new BannerEvent(5,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventPalBannerList.add(new BannerEvent(6,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventPalBannerList.add(new BannerEvent(7,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventPalBannerList.add(new BannerEvent(8,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+        eventPalBannerList.add(new BannerEvent(9,"PONMAGAL VANDHAL","https://media.glassdoor.com/l/90/f1/7b/b8/company-event.jpg",""));
+
+
+           //this is default tab selected
+        setBannerEventPagerAdapter(homeBannerList);
+        //on tab change selected data
+        categoryTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition()){
+                    case 1:
+                         setBannerEventPagerAdapter(eventBannerList);
+                        return;
+                    case 2:
+                       setBannerEventPagerAdapter(communicationFormBannerList);
+                     return;
+                    case 3:
+                       setBannerEventPagerAdapter(eventPalBannerList);
+                     return;
+                    default:
+                        setBannerEventPagerAdapter(homeBannerList);
+
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
     private void setBannerEventPagerAdapter(List<BannerEvent>bannerEventList){
 
@@ -59,12 +129,12 @@ public class MainActivity extends AppCompatActivity {
         bannerEventPagerAdapter=new BannerEventPagerAdapter(this,bannerEventList);
         bannerViewPager.setAdapter(bannerEventPagerAdapter);
 
-        tabLayout.setupWithViewPager(bannerViewPager);
+        indicatorTab.setupWithViewPager(bannerViewPager);
 
 
         Timer sliderTimer =new Timer();
         sliderTimer.scheduleAtFixedRate(new AutoSlide(),4000,6000);
-        tabLayout.setupWithViewPager(bannerViewPager, true);
+        indicatorTab.setupWithViewPager(bannerViewPager, true);
 
 
 
@@ -78,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
                 public void run() {
 
-                    if (bannerViewPager.getCurrentItem() < bannerEventList.size() - 1) {
+                    if (bannerViewPager.getCurrentItem() < homeBannerList.size() - 1) {
                         bannerViewPager.setCurrentItem(bannerViewPager.getCurrentItem() + 1);
                     } else {
                         bannerViewPager.setCurrentItem(0);
