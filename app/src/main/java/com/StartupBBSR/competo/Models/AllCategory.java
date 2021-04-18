@@ -5,7 +5,7 @@ public class AllCategory {
     String categoryTitle;
     Integer categoryId;
 
-    public AllCategory(String categoryTitle, Integer categoryId) {
+    public AllCategory( Integer categoryId,String categoryTitle) {
         this.categoryTitle = categoryTitle;
         this.categoryId = categoryId;
     }

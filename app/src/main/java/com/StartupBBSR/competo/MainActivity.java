@@ -1,6 +1,8 @@
 package com.StartupBBSR.competo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -9,6 +11,8 @@ import android.view.View;
 
 import com.StartupBBSR.competo.Activity.LoginActivity;
 import com.StartupBBSR.competo.Adapters.BannerEventPagerAdapter;
+import com.StartupBBSR.competo.Adapters.MainRecyclerAdapter;
+import com.StartupBBSR.competo.Models.AllCategory;
 import com.StartupBBSR.competo.Models.BannerEvent;
 import com.StartupBBSR.competo.databinding.ActivityMainBinding;
 import com.google.android.material.tabs.TabLayout;
@@ -22,6 +26,7 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
     BannerEventPagerAdapter bannerEventPagerAdapter;
     TabLayout indicatorTab,categoryTab;
+
     ViewPager bannerViewPager;
     List<BannerEvent> homeBannerList;
     List<BannerEvent> eventBannerList;
@@ -29,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
     List<BannerEvent> eventPalBannerList;
 //    List<BannerEvent> IndexBannerList;
 
+    MainRecyclerAdapter mainRecyclerAdapter;
+    RecyclerView mainRecycler;
+
+    List<AllCategory>allCategoryList;
 
     private ActivityMainBinding activityMainBinding;
 
@@ -122,6 +131,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        allCategoryList= new ArrayList<>();
+        allCategoryList.add(new AllCategory(1,"CulturalEvent"));
+        allCategoryList.add(new AllCategory(1,"CalibrationEvent"));
+        allCategoryList.add(new AllCategory(1,"OrganizationEvent"));
+
+
+
     }
     private void setBannerEventPagerAdapter(List<BannerEvent>bannerEventList){
 
@@ -129,9 +145,8 @@ public class MainActivity extends AppCompatActivity {
         bannerEventPagerAdapter=new BannerEventPagerAdapter(this,bannerEventList);
         bannerViewPager.setAdapter(bannerEventPagerAdapter);
 
+
         indicatorTab.setupWithViewPager(bannerViewPager);
-
-
         Timer sliderTimer =new Timer();
         sliderTimer.scheduleAtFixedRate(new AutoSlide(),4000,6000);
         indicatorTab.setupWithViewPager(bannerViewPager, true);
@@ -168,5 +183,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+    public void setMainRecycler(List<AllCategory>allCategoryList){
+        mainRecycler=findViewById(R.id.main_recycler);
+        RecyclerView.LayoutManager LayoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        mainRecycler.setLayoutManager(LayoutManager);
+        mainRecyclerAdapter=new MainRecyclerAdapter(this, allCategoryList);
+        mainRecycler.setAdapter(mainRecyclerAdapter);
     }
 }
