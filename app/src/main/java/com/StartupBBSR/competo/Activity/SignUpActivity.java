@@ -1,4 +1,4 @@
-package com.StartupBBSR.competo.Activity;
+ package com.StartupBBSR.competo.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
