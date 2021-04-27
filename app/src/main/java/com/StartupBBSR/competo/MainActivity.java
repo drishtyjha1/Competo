@@ -3,6 +3,7 @@ package com.StartupBBSR.competo;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -26,13 +27,13 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
     BannerEventPagerAdapter bannerEventPagerAdapter;
     TabLayout indicatorTab,categoryTab;
-
     ViewPager bannerViewPager;
     List<BannerEvent> homeBannerList;
     List<BannerEvent> eventBannerList;
     List<BannerEvent> communicationFormBannerList;
     List<BannerEvent> eventPalBannerList;
 //    List<BannerEvent> IndexBannerList;
+
 
     MainRecyclerAdapter mainRecyclerAdapter;
     RecyclerView mainRecycler;
@@ -121,6 +122,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
 
@@ -190,5 +198,53 @@ public class MainActivity extends AppCompatActivity {
         mainRecycler.setLayoutManager(LayoutManager);
         mainRecyclerAdapter=new MainRecyclerAdapter(this, allCategoryList);
         mainRecycler.setAdapter(mainRecyclerAdapter);
+    }
+}
+
+    private void setBannerEventPagerAdapter(List<BannerEvent>bannerEventList){
+
+        bannerViewPager = findViewById(R.id.banner_viewPager);
+        bannerEventPagerAdapter=new BannerEventPagerAdapter(this,bannerEventList);
+        bannerViewPager.setAdapter(bannerEventPagerAdapter);
+
+        indicatorTab.setupWithViewPager(bannerViewPager);
+
+
+        Timer sliderTimer =new Timer();
+        sliderTimer.scheduleAtFixedRate(new AutoSlide(),4000,6000);
+        indicatorTab.setupWithViewPager(bannerViewPager, true);
+
+
+
+    }
+    class  AutoSlide extends TimerTask {
+
+        @Override
+        public void run() {
+            MainActivity.this.runOnUiThread(new Runnable() {
+                @Override
+
+                public void run() {
+
+                    if (bannerViewPager.getCurrentItem() < homeBannerList.size() - 1) {
+                        bannerViewPager.setCurrentItem(bannerViewPager.getCurrentItem() + 1);
+                    } else {
+                        bannerViewPager.setCurrentItem(0);
+                    }
+
+                }
+
+            });
+
+
+            activityMainBinding.button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    finish();
+                }
+            });
+        }
     }
 }
