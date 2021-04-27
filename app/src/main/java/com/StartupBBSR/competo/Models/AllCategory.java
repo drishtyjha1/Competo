@@ -5,7 +5,10 @@ public class AllCategory {
     String categoryTitle;
     Integer categoryId;
 
+
     public AllCategory( Integer categoryId,String categoryTitle) {
+    public AllCategory(String categoryTitle, Integer categoryId) {
+
         this.categoryTitle = categoryTitle;
         this.categoryId = categoryId;
     }
