@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     List<BannerEvent> eventBannerList;
     List<BannerEvent> communicationFormBannerList;
     List<BannerEvent> eventPalBannerList;
+    List<BannerEvent> indexBannerList;
 //    List<BannerEvent> IndexBannerList;
 
 
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         indicatorTab = findViewById(R.id.tab_indicator);
         categoryTab = findViewById(R.id.tabLayout2);
 
-
+         
         homeBannerList = new ArrayList<>();
         homeBannerList.add(new BannerEvent(1, "PONMAGAL VANDHAL", "https://png.pngtree.com/thumb_back/fw800/back_pic/05/06/22/87596c72e3222da.jpg", ""));
         homeBannerList.add(new BannerEvent(2, "LITTLE WOMEN", "https://png.pngtree.com/thumb_back/fw800/back_pic/05/06/22/87596c72e3222da.jpg", ""));

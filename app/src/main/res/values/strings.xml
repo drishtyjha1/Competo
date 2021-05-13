@@ -6,4 +6,5 @@
     <string name="home">home</string>
     <string name="user_activity">User Activity</string>
     <string name="logout">LogOut</string>
+    <string name="index">index</string>
 </resources>
