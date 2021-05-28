@@ -124,39 +124,39 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void setBannerEventPagerAdapter(List<BannerEvent>bannerEventList){
-
-        bannerViewPager = findViewById(R.id.banner_viewPager);
-        bannerEventPagerAdapter=new BannerEventPagerAdapter(this,bannerEventList);
-        bannerViewPager.setAdapter(bannerEventPagerAdapter);
-
-        indicatorTab.setupWithViewPager(bannerViewPager);
-
-
-        Timer sliderTimer =new Timer();
-        sliderTimer.scheduleAtFixedRate(new AutoSlide(),4000,6000);
-        indicatorTab.setupWithViewPager(bannerViewPager, true);
+//
+//        bannerViewPager = findViewById(R.id.banner_viewPager);
+//        bannerEventPagerAdapter=new BannerEventPagerAdapter(this,bannerEventList);
+//        bannerViewPager.setAdapter(bannerEventPagerAdapter);
+//
+//        indicatorTab.setupWithViewPager(bannerViewPager);
 
 
-
-    }
-    class  AutoSlide extends TimerTask {
-
-        @Override
-        public void run() {
-            MainActivity.this.runOnUiThread(new Runnable() {
-                @Override
-
-                public void run() {
-
-                    if (bannerViewPager.getCurrentItem() < homeBannerList.size() - 1) {
-                        bannerViewPager.setCurrentItem(bannerViewPager.getCurrentItem() + 1);
-                    } else {
-                        bannerViewPager.setCurrentItem(0);
-                    }
-
-                }
-
-            });
-        }
+//        Timer sliderTimer =new Timer();
+//        sliderTimer.scheduleAtFixedRate(new AutoSlide(),4000,6000);
+//        indicatorTab.setupWithViewPager(bannerViewPager, true);
+//
+//
+//
+//    }
+//    class  AutoSlide extends TimerTask {
+//
+//        @Override
+//        public void run() {
+//            MainActivity.this.runOnUiThread(new Runnable() {
+//                @Override
+//
+//                public void run() {
+//
+//                    if (bannerViewPager.getCurrentItem() < homeBannerList.size() - 1) {
+//                        bannerViewPager.setCurrentItem(bannerViewPager.getCurrentItem() + 1);
+//                    } else {
+//                        bannerViewPager.setCurrentItem(0);
+//                    }
+//
+//                }
+//
+//            });
+//        }
     }
 }

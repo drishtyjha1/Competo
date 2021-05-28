@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.StartupBBSR.competo.Fragments.FeedMainFragment;
 import com.StartupBBSR.competo.Models.BannerEvent;
 import com.StartupBBSR.competo.R;
 import com.bumptech.glide.Glide;
@@ -20,8 +21,8 @@ public class BannerEventPagerAdapter extends PagerAdapter {
     Context context;
     List<BannerEvent> bannerEventList;
 
-    public BannerEventPagerAdapter(Context context, List<BannerEvent> bannerEventList) {
-        this.context = context;
+    public BannerEventPagerAdapter(FeedMainFragment context, List<BannerEvent> bannerEventList) {
+
         this.bannerEventList = bannerEventList;
     }
 

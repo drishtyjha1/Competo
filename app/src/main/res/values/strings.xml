@@ -14,7 +14,8 @@
     <string name="feed">Feed</string>
     <string name="user_activity">User Activity</string>
     <string name="logout">LogOut</string>
-
+    <string name="conversation">conversations</string>
+    <string name="message_request">Message Request</string>
 
 
 </resources>
