@@ -16,6 +16,7 @@
     <string name="logout">LogOut</string>
     <string name="conversation">conversations</string>
     <string name="message_request">Message Request</string>
+    <string name="more">more</string>
 
 
 </resources>

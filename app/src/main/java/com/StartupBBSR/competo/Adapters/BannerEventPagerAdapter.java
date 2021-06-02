@@ -18,28 +18,30 @@ import java.util.List;
 
 public class BannerEventPagerAdapter extends PagerAdapter {
 
+
     Context context;
-    List<BannerEvent> bannerEventList;
+    List<BannerEvent> FeedBannerList;
 
-    public BannerEventPagerAdapter(FeedMainFragment context, List<BannerEvent> bannerEventList) {
-
-        this.bannerEventList = bannerEventList;
+    public BannerEventPagerAdapter(Context context, List<BannerEvent> FeedEventList) {
+        this.context = context;
+        this.FeedBannerList = FeedEventList;
     }
 
     @Override
     public int getCount() {
-        return bannerEventList.size();
+        return FeedBannerList.size();
     }
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view==object;
+        return view == object;
     }
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        container.removeView((View)object);
+        container.removeView((View) object);
     }
+
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
@@ -50,8 +52,8 @@ public class BannerEventPagerAdapter extends PagerAdapter {
         //here we are using glide library for fetching image from url and set it to large view
         //lets add Glide dependency
 
-        Glide.with(context).load(bannerEventList.get(position).getImageUrl()).into(bannerImage);
-  container.addView(view);
+        Glide.with(context).load(FeedBannerList.get(position).getImageUrl()).into(bannerImage);
+        container.addView(view);
         return view;
     }
 }
