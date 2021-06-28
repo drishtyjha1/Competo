@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.StartupBBSR.competo.Adapters.BannerEventPagerAdapter;
 import com.StartupBBSR.competo.Adapters.VerticalRecyclerViewAdapter;
+import com.StartupBBSR.competo.Models.AllCategory;
 import com.StartupBBSR.competo.Models.BannerEvent;
 import com.StartupBBSR.competo.Models.HorizontalModel;
 import com.StartupBBSR.competo.Models.VerticalModel;
@@ -30,6 +31,7 @@ public class FeedMainFragment extends Fragment {
     BannerEventPagerAdapter bannerEventPagerAdapter;
     TabLayout indicatorTab;
     ViewPager bannerViewPager;
+
     List<BannerEvent> FeedBannerList;
     RecyclerView verticalRecycleView;
     VerticalRecyclerViewAdapter adapter;
@@ -73,7 +75,12 @@ public class FeedMainFragment extends Fragment {
 
         setBannerEventPagerAdapter(FeedBannerList);
 
-
+//        arrayListVertical=new ArrayList<>();
+//        arrayListVertical.add(new VerticalModel("event1"));
+//        arrayListVertical.add(new VerticalModel("event2"));
+//        arrayListVertical.add(new VerticalModel("event3"));
+//        arrayListVertical.add(new VerticalModel("event4"));
+//
         return view;
     }
 
@@ -99,7 +106,10 @@ public class FeedMainFragment extends Fragment {
 
         adapter.notifyDataSetChanged();
     }
-
+//private void setVerticalRecycleViewAdapter(List<VerticalModel>verticalModelList){
+//        verticalRecycleViewAdapter =new VerticalRecyclerViewAdapter(getContext(),arrayListVertical);
+//        verticalRecycleView.setAdapter(setVerticalRecycleViewAdapter(););
+//}
     private void setBannerEventPagerAdapter(List<BannerEvent> FeedBannerList) {
         bannerEventPagerAdapter = new BannerEventPagerAdapter(getContext(), FeedBannerList);
         bannerViewPager.setAdapter(bannerEventPagerAdapter);
