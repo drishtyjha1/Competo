@@ -1,6 +1,7 @@
 package com.StartupBBSR.competo.Fragments;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,9 +36,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.Date;
 import java.util.List;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -63,9 +67,38 @@ public class EventPalFragment extends Fragment {
     private CollectionReference collectionReference;
     private FirestoreRecyclerOptions<EventPalModel> options;
 
+    private EventPalModel eventPalModel;
+    private Query query;
+
+    private NavController navController;
+    private int flag = 0;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getArguments() != null) {
+            eventPalModel = (EventPalModel) getArguments().getSerializable("userDetails");
+            flag = 1;
+        } else {
+            flag = 0;
+        }
+
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (flag == 1) {
+//                    Came from find fragment, go back there
+                    navController.navigate(R.id.action_eventPalFragment2_to_findMainFragment);
+                }
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
     @Override
@@ -83,8 +116,13 @@ public class EventPalFragment extends Fragment {
 
         collectionReference = firestoreDB.collection(constant.getUsers());
 
-        Query query = collectionReference.orderBy(constant.getUserIdField())
-                .whereNotEqualTo(constant.getUserIdField(), userID);
+        if (flag == 0) {
+            query = collectionReference.orderBy(constant.getUserIdField())
+                    .whereNotEqualTo(constant.getUserIdField(), userID);
+        } else {
+            query = collectionReference.whereEqualTo(constant.getUserIdField(), eventPalModel.getUserID());
+        }
+
 
         options = new FirestoreRecyclerOptions.Builder<EventPalModel>()
                 .setQuery(query, EventPalModel.class)
@@ -196,10 +234,7 @@ public class EventPalFragment extends Fragment {
 
         });
         recyclerView.setAdapter(adapter);
-
 //        Query query = collectionReference.orderBy("Name").whereArrayContains("Chips", "Coder");
-
-
         return view;
     }
 
@@ -207,7 +242,8 @@ public class EventPalFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        if (flag == 1)
+            navController = Navigation.findNavController(getActivity(), R.id.find_fragment);
     }
 
     @Override

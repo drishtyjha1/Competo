@@ -109,18 +109,6 @@ public class EventPalUserAdapter extends FirestoreRecyclerAdapter<EventPalModel,
             btnSendMessageRequestEventPal = binding.btnSendMessage;
 
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (listener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            listener.onItemClick(itemView, position);
-                        }
-                    }
-                }
-            });
-
             binding.btnBottomSheet.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
