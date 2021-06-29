@@ -9,16 +9,17 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout2"
-        android:layout_width="409dp"
-        android:layout_height="69dp"
-        android:padding="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+     android:padding="10dp"
         android:background="@color/main_background"
         android:fadeScrollbars="true"
         android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabTextAppearance="@style/TextAppearance.AppCompat.Medium"
+
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
         app:tabTextColor="@color/white">
 
         <com.google.android.material.tabs.TabItem
