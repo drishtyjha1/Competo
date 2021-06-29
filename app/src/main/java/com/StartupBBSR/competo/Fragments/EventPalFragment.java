@@ -96,7 +96,8 @@ public class EventPalFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setHasFixedSize(true);
         snapHelper.attachToRecyclerView(recyclerView);
-//        EventPalUserAdapter adapter = new EventPalUserAdapter(getContext(), mUserDataSet, mSkillDataSet);
+
+
         adapter = new EventPalUserAdapter(getContext(), options);
         adapter.setOnItemClickListener(new EventPalUserAdapter.OnItemClickListener() {
             @Override
