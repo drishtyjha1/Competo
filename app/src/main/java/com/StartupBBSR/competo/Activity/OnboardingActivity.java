@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import com.StartupBBSR.competo.Adapters.OnboardingAdapter;
 import com.StartupBBSR.competo.Models.OnboardingModel;
@@ -58,9 +59,9 @@ public class OnboardingActivity extends AppCompatActivity {
 
 //        Fill list
         List<OnboardingModel> onboardingModelList = new ArrayList<>();
-        onboardingModelList.add(new OnboardingModel("Fresh Food", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book", R.drawable.cover_image));
-        onboardingModelList.add(new OnboardingModel("Fast Delivery", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book", R.drawable.iron_man));
-        onboardingModelList.add(new OnboardingModel("Easy Payment", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book", R.drawable.latte));
+        onboardingModelList.add(new OnboardingModel("connect with team", "A secure chat feature so that you can have conversations both individually and as a group directly on our platform.", R.drawable.cover_img1));
+        onboardingModelList.add(new OnboardingModel("Event Finder", "Our events sections allows you to choose from a plethora of events that are displayed according to your choice.", R.drawable.cover_img2));
+        onboardingModelList.add(new OnboardingModel("Stay Connected", "Find the right people for your team from our diverse community.", R.drawable.cover_img3));
 
 
 //        Set adapter
@@ -107,6 +108,18 @@ public class OnboardingActivity extends AppCompatActivity {
                     binding.btnOnboardingGetstarted.setVisibility(View.VISIBLE);
                     binding.btnOnboardingGetstarted.setAnimation(getstartedbtnAnim);
                 }
+                switch (tab.getPosition()) {
+                    case 0:
+
+                        Toast.makeText(OnboardingActivity.this, "blue", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        Toast.makeText(OnboardingActivity.this, "red", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2:
+                        Toast.makeText(OnboardingActivity.this, "green", Toast.LENGTH_SHORT).show();
+                        break;
+                }
             }
 
             @Override
@@ -125,8 +138,7 @@ public class OnboardingActivity extends AppCompatActivity {
 
     private boolean receivedPrefData() {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("onboardingPref", MODE_PRIVATE);
-        Boolean isOnboardingIntroduced = pref.getBoolean("isOnboardingIntroduced", false);
-        return isOnboardingIntroduced;
+        return pref.getBoolean("isOnboardingIntroduced", false);
     }
 
     private void savePreferenceData() {

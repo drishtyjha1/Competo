@@ -81,4 +81,9 @@ dependencies {
 //    For motion layout
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0-beta02'
 
+    //Firebase in app messaging
+    implementation 'com.google.firebase:firebase-inappmessaging-display-ktx'
+
+//Firebase cloud messaging
+    implementation 'com.google.firebase:firebase-messaging-ktx'
 }
